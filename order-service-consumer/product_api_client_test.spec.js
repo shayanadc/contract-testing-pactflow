@@ -1,27 +1,52 @@
 const axios = require('axios');
 const ProductApi = require('./product_api_client'); 
-const AxiosMockAdapter = require('axios-mock-adapter');
 
+const { PactV3, MatchersV3 } = require('@pact-foundation/pact');
+const { eachLike } = MatchersV3;
+
+const path = require('path');
+
+const provider = new PactV3({
+  consumer: "OrderConsumerService",
+  provider: "ProductProviderService",
+  dir: path.resolve(process.cwd(), "tests"),
+});
 
 describe("API Pact test", () => {
   describe("getting all products", () => {
     test("products exists", async () => {
-      
-      let axiosMock = new AxiosMockAdapter(axios);
+      await provider.addInteraction({
+        states: [{ description: "products exist" }],
+        uponReceiving: "get all products",
+        withRequest: {
+          method: "GET",
+          path: "/products",
+        },
+        willRespondWith: {
+          status: 200,
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+          },
+          body: eachLike({
+            id: 2512,
+            type: "t-shirt",
+            name: "Gem V",
+          }),
+        },
+      });
 
-      axiosMock.onGet('/products').reply(200, [
-        { id: 1, name: 'Product 1' },
-        { id: 2, name: 'Product 2' },
-      ]);
-  
-      const productApi = new ProductApi('http://example.com');
-      const response = await productApi.fetchAll();
-  
-      expect(response.status).toBe(200);
-      expect(response.data).toEqual([
-        { id: 1, name: 'Product 1' },
-        { id: 2, name: 'Product 2' },
-      ]);
+      await provider.executeTest(async (mockService) => {
+      
+        const productApi = new ProductApi(mockService.url);
+        const response = await productApi.fetchAll();
+        expect(response.data).toStrictEqual([
+          {
+            id: 2512,
+            type: "t-shirt",
+            name: "Gem V",
+          },
+        ]);
+      });
     });
   });
 });
