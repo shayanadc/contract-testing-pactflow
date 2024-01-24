@@ -5,8 +5,11 @@
 ✅ give us confidence to release
 
 ❌ introduce dependencies
+
 ❌ give slow feedback
+
 ❌ break easily
+
 ❌ require lots of maintenance
 
 
@@ -15,8 +18,11 @@
 <img width="504" alt="Screenshot 2024-01-24 at 19 51 56" src="https://github.com/shayanadc/contract-testing-pactflow/assets/6294224/6a4eaf0a-dfbe-4ca3-9136-9a4ccb32193a">
 
 ✅ run independently
+
 ✅ give fast feedback
+
 ✅ are stable
+
 ✅ are easy to maintain
 
 ❌ do not give us the confidence to release.
