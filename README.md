@@ -40,7 +40,10 @@
 <img width="492" alt="Screenshot 2024-01-24 at 19 53 31" src="https://github.com/shayanadc/contract-testing-pactflow/assets/6294224/9e378384-2ad3-4495-a1ec-7f5b11351965">
 
 ✅ Share and collaborate on contracts across teams
+
 ✅ Manage contracts across code branches and environments
+
 ✅ Orchestrate builds to know when it is safe to deploy
+
 ✅ Integrate into your processes and tooling
 
