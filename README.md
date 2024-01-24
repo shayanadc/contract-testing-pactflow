@@ -19,17 +19,18 @@
 ✅ are stable
 ✅ are easy to maintain
 
-❌ do not give us confidence to release.
+❌ do not give us the confidence to release.
 
 ## How Contract Testing helps
 
 <img width="1012" alt="Screenshot 2024-01-24 at 19 52 48" src="https://github.com/shayanadc/contract-testing-pactflow/assets/6294224/b9ff494e-f74a-4714-8882-0b0889e20387">
 
-
-
 ✅ run independently
+
 ✅ give fast feedback
+
 ✅ are stable
+
 ✅ are easy to maintain
 
 
